@@ -5,12 +5,11 @@ Created on Tue Dec 05 09:28:53 2017
 
 @author: dushu
 """
-from numpy import *
 
 
-def loadDataSet():
+def loadDataSet(fileName):
     dataSet = []
-    fr = open('testFile.txt')
+    fr = open(fileName)
     for line in fr.readlines():
         line = line.replace('\n', '')
         companies = line.split(',')
@@ -120,7 +119,7 @@ def pntRules(ruleList):
 
 
 if "__main__" == __name__:
-    dataSet = loadDataSet()
+    dataSet = loadDataSet('testFile.txt')
     L, supportData = apriori(dataSet, 0.2)
-    rule = generateRules(L, supportData)
+    rule = generateRules(L, supportData, 0.65)
     pntRules(rule)
